@@ -18,7 +18,7 @@ class CreateStepsTable extends Migration
             $table->integer('mission_id')->unsigned();
             $table->date('date');
             $table->integer('level')->unsigned();
-            $table->string('memo', 20);
+            $table->string('memo', 20)->nullable();
             $table->timestamps();
         });
     }

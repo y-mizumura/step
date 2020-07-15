@@ -18,7 +18,8 @@ class CreateMissionsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->string('name', 20);
-            $table->string('memo', 100);
+            $table->string('level_unit', 10)->default('回');
+            $table->string('memo', 100)->nullable();
             $table->timestamps();
         });
     }
