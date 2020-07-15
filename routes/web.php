@@ -7,6 +7,7 @@ Route::get('/', function () {
 });
 
 // MissionController
+Route::get('/missions', 'MissionController@index')->name('missions.index');
 Route::get('/missions/create', 'MissionController@showCreateForm')->name('missions.create');
 Route::post('/missions/create', 'MissionController@create');
 Route::post('/missions/{mission}/edit', 'MissionController@edit')->name('missions.edit');
