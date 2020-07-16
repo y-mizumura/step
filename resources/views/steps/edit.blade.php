@@ -12,7 +12,7 @@
       </div>
       <div class="col col-md-offset-3 col-md-6">
         <nav class="panel panel-default">
-          <div class="panel-heading">『{{ $step->date }}』を編集する</div>
+          <div class="panel-heading">ステップ：『{{ $step->date }}』</div>
           <div class="panel-body">
             @if($errors->any())
               <div class="alert alert-danger">
@@ -23,20 +23,25 @@
                 </ul>
               </div>
             @endif
-            <form action="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}" method="post">
-              @csrf
-              <div class="form-group">
-                <label for="score">スコア ({{ $mission->score_unit }})</label>
-                <input type="number" class="form-control" name="score" id="score" value="{{ old('score') ?? $step->score }}" />
-              </div>
-              <div class="form-group">
-                <label for="memo">メモ</label>
-                <textarea class="form-control" name="memo" id="memo" rows="3">{{ old('memo') ?? $step->memo }}</textarea>
-              </div>
-              <div class="text-right">
+
+            <div class="form-group">
+              <label for="score">スコア ({{ $mission->score_unit }})</label>
+              <input type="number" class="form-control" name="score" id="score" value="{{ old('score') ?? $step->score }}" form="step_update" />
+            </div>
+            <div class="form-group">
+              <label for="memo">メモ</label>
+              <textarea class="form-control" name="memo" id="memo" rows="3" form="step_update">{{ old('memo') ?? $step->memo }}</textarea>
+            </div>
+            <div class="text-right">
+              <form id="delete_step_{{ $step->id }}" method="POST" action="{{ route('steps.delete', ['mission' => $mission, 'step' => $step]) }}" style="display:inline;">
+                @csrf
+                <a href="javascript:void(0)" onclick="delete_confirm( 'delete_step_{{ $step->id }}', 'ステップを削除します。よろしいですか。' )" style="color:red;">ステップを削除する</a>
+              </form>
+              <form id="step_update" action="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}" method="post" style="display:inline; margin-left:10px; margin-right:10px;">
+                @csrf
                 <button type="submit" class="btn btn-primary">更新する</button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </nav>
         <div class="text-center">
@@ -45,4 +50,16 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('scripts')
+  <script type="text/javascript">
+    function delete_confirm( step_id, message ){
+      if(window.confirm(message)){
+        var target = document.getElementById( step_id );
+        target.method = "post";
+        target.submit();
+      }
+    }
+  </script>
 @endsection

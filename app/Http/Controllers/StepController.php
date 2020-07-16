@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mission;
 use App\Step;
+use Illuminate\Http\Request;
 use App\Http\Requests\CreateStep;
 use App\Http\Requests\EditStep;
 
@@ -40,6 +41,24 @@ class StepController extends Controller
         return redirect()->route('missions.detail', [
             'mission' => $mission
         ])->with('message', 'ステップを更新しました。');
+    }
+
+    public function delete(Mission $mission, Step $step, Request $request)
+    {
+        $this->checkRelation($mission, $step);
+
+        $step->delete();
+
+        return redirect()->route('missions.detail', [
+            'mission' => $mission
+        ])->with('message', 'ステップを削除しました。');
+    }
+
+    private function checkRelation(Mission $mission, Step $step)
+    {
+        if ($mission->id !== $step->mission_id) {
+            abort(404);
+        }
     }
 
 }
