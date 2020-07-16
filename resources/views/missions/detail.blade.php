@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('styles')
+  @include('share.flatpickr.styles')
+@endsection
+
 @section('content')
   <div class="container">
     <div class="row">
@@ -8,12 +12,24 @@
           <li><a href="{{ route('missions.index') }}">ミッション一覧</a></li>
           <li class="active"><span>{{ $mission->name }}</span></li>
         </ol>
+        @if($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach($errors->all() as $message)
+                <li>{{ $message }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+        @if (Session::has('message'))
+          <div class="alert alert-success">
+              {{ session('message') }}
+          </div>
+        @endif
       </div>
       <div class="col col-md-4">
-        <nav class="panel panel-default">
-          <div class="panel-heading">
-            ミッション詳細
-          </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">ミッション詳細</div>
           <div class="panel-body">
             <div class="row" style="padding-bottom:10px">
               <div class="col-xs-5"><strong>ミッション名</strong></div>
@@ -23,32 +39,27 @@
               <div class="col-xs-5"><strong>カテゴリ</strong></div>
               <div class="col-xs-7">{{ $mission->category->name }}</div>
             </div>
-            <div class="row" style="padding-bottom:10px">
-              <div class="col-xs-5"><strong>単位</strong></div>
-              <div class="col-xs-7">{{ $mission->score_unit }}</div>
-            </div>
             <div class="row">
               <div class="col-xs-5"><strong>メモ</strong></div>
               <div class="col-xs-7">{{ $mission->memo }}</div>
             </div>
           </div>
-        </nav>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#add_step_modal">
+          ステップを追加
+        </button>
       </div>
       <div class="column col-md-8">
         @if ( !$steps->isEmpty() )
           <div class="panel panel-default">
-            <div class="panel-heading">
-              チャート
-            </div>
+            <div class="panel-heading">チャート</div>
             <div class="panel-body">
               <canvas id="chart" width="400" height="200"></canvas>
             </div>
           </div>
         @endif
         <div class="panel panel-default">
-          <div class="panel-heading">
-            記録一覧
-          </div>
+          <div class="panel-heading">ステップ一覧</div>
           <table class="table">
             <thead>
               <tr>
@@ -77,9 +88,51 @@
       </div>    
     </div>
   </div>
+  {{--  モーダル  --}}
+  <div class="modal fade" id="add_step_modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">ステップを追加</h4>
+        </div>
+        <div class="modal-body">
+          <form id="add_step_form" action="{{ route('steps.create', ['mission' => $mission]) }}" method="post">
+            @csrf
+            <div class="form-group">
+              <label for="date">実施日</label>
+              <input type="text" class="form-control" name="date" id="date" value="{{ old('date') }}" />
+            </div>
+            <div class="form-group">
+              <label for="score">スコア ({{ $mission->score_unit }})</label>
+              <input type="number" class="form-control" name="score" id="score" value="{{ old('score') }}" />
+            </div>
+            <div class="form-group">
+              <label for="memo">メモ</label>
+              <textarea class="form-control" name="memo" id="memo" value="{{ old('memo') }}" rows="3"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+          <button type="submit" form="add_step_form" class="btn btn-primary">追加する</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('scripts')
+  @include('share.flatpickr.scripts')
+  <script>
+    flatpickr(document.getElementById('date'), {
+      locale: 'ja',
+      dateFormat: "Y/m/d",
+      minDate: new Date(),
+      weekNumbers: true
+    });
+  </script>
+
   @if ( !$steps->isEmpty() )
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
     <script>
