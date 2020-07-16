@@ -43,8 +43,11 @@ class MissionController extends Controller
 
     public function detail(Mission $mission)
     {
+        $steps = $mission->steps()->get();
+
         return view('missions/detail', [
-            'mission' => $mission
+            'mission' => $mission,
+            'steps' => $steps
         ]);
     }
 
