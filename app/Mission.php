@@ -13,4 +13,9 @@ class Mission extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function steps()
+    {
+        return $this->hasMany('App\Step');
+    }
 }
