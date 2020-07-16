@@ -74,7 +74,7 @@
             @if ( !$steps->isEmpty() )
               @foreach($steps as $step)
                 <tr>
-                  <td>{{ $step->date }}</td>
+                  <td><a href="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}">{{ $step->date }}</a></td>
                   <td>{{ $step->score . $mission->score_unit }}</td>
                   <td>{{ $step->memo }}</td>
                 </tr>
@@ -111,7 +111,7 @@
             </div>
             <div class="form-group">
               <label for="memo">メモ</label>
-              <textarea class="form-control" name="memo" id="memo" value="{{ old('memo') }}" rows="3"></textarea>
+              <textarea class="form-control" name="memo" id="memo" rows="3">{{ old('memo') }}</textarea>
             </div>
           </form>
         </div>

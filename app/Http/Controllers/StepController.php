@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mission;
 use App\Step;
 use App\Http\Requests\CreateStep;
+use App\Http\Requests\EditStep;
 
 class StepController extends Controller
 {
@@ -22,9 +23,23 @@ class StepController extends Controller
         return redirect()->route('missions.detail', ['mission' => $mission])->with('message', 'ステップを追加しました。');
     }
 
-    public function showEditForm()
+    public function showEditForm(Mission $mission, Step $step)
     {
-        return "showEditForm";
+        return view('steps/edit', [
+            'mission' => $mission,
+            'step' => $step
+        ]);
+    }
+
+    public function edit(Mission $mission, Step $step, EditStep $request)
+    {
+        $step->score = $request->score;
+        $step->memo = $request->memo;
+        $step->save();
+
+        return redirect()->route('missions.detail', [
+            'mission' => $mission
+        ])->with('message', 'ステップを更新しました。');
     }
 
 }
