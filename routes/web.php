@@ -9,6 +9,10 @@ Route::group(['middleware' => 'auth'], function() {
     // HomeController
     Route::get('/', 'HomeController@index')->name('home');
 
+    // ChangePasswordController パスワードの変更
+    Route::get('/password/change', 'Auth\ChangePasswordController@showChangePasswordForm')->name('password.form');
+    Route::post('/password/change', 'Auth\ChangePasswordController@ChangePassword')->name('password.change');
+
     // MissionController
     Route::get('/missions', 'MissionController@index')->name('missions.index');
     Route::get('/missions/create', 'MissionController@showCreateForm')->name('missions.create');

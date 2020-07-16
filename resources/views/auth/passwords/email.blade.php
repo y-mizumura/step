@@ -4,21 +4,21 @@
   <div class="container">
     <div class="row">
       <div class="col col-md-offset-3 col-md-6">
+        @if (session('status'))
+          <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+          </div>
+        @endif
+        @if($errors->any())
+          <div class="alert alert-danger">
+            @foreach($errors->all() as $message)
+              {{ $message }}
+            @endforeach
+          </div>
+        @endif
         <nav class="panel panel-default">
           <div class="panel-heading">パスワード再発行</div>
           <div class="panel-body">
-            @if (session('status'))
-              <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-              </div>
-            @endif
-            @if($errors->any())
-              <div class="alert alert-danger">
-                @foreach($errors->all() as $message)
-                  {{ $message }}
-                @endforeach
-              </div>
-            @endif
             <form action="{{ route('password.email') }}" method="POST">
               @csrf
               <div class="form-group">

@@ -26,6 +26,8 @@ class StepController extends Controller
 
     public function showEditForm(Mission $mission, Step $step)
     {
+        $this->checkRelation($mission, $step);
+
         return view('steps/edit', [
             'mission' => $mission,
             'step' => $step
@@ -34,6 +36,8 @@ class StepController extends Controller
 
     public function edit(Mission $mission, Step $step, EditStep $request)
     {
+        $this->checkRelation($mission, $step);
+
         $step->score = $request->score;
         $step->memo = $request->memo;
         $step->save();

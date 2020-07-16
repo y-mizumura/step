@@ -23,7 +23,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             @if(Auth::check())
-              {{--  <li><a href="{{ route('password.form') }}">パスワード変更</a></li>  --}}
+              <li><a href="{{ route('password.form') }}">パスワード変更</a></li>
               <li>
                 <a href="#" id="logout">ログアウト</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
