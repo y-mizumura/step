@@ -23,19 +23,19 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'name' => '運動',
-                'color' => '#66CCFF',
+                'color' => 'red',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'name' => '自己啓発',
-                'color' => '#FFCC66',
+                'color' => 'green',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => '食事',
-                'color' => '#CCFF66',
+                'name' => 'その他',
+                'color' => 'yellow',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]

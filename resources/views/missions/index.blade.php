@@ -15,11 +15,16 @@
             <a href="{{ route('missions.create') }}" class="pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>追加</a>
           </div>
           <div class="list-group">
-            @foreach($missions as $mission)
-              <a href="{{ route('missions.detail', ['mission' => $mission]) }}" class="list-group-item" >
-                {{ $mission->name }}
-              </a>
-            @endforeach
+            @if ( !$missions->isEmpty() )
+              @foreach($missions as $mission)
+                <a href="{{ route('missions.detail', ['mission' => $mission]) }}" class="list-group-item" >
+                  <h4 class="list-group-item-heading">{{ $mission->name }}<span class="label {{ $mission->category->color }} ml10 mb5">{{ $mission->category->name }}</span></h4>
+                  <p class="list-group-item-text">最終実施日：{{ $mission->latest_step() ? $mission->latest_step()->date : '未実施' }}</p>
+                </a>
+              @endforeach
+            @else
+              <span class="list-group-item">ミッションは存在しません。</span>
+            @endif
           </div>
         </nav>
       </div>

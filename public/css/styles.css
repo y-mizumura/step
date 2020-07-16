@@ -1,5 +1,4 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
-/* @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'); */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/bootflat/2.0.4/css/bootflat.min.css');
 
 body {
@@ -83,11 +82,36 @@ td.wp50, th.wp50 {
   background-color: #fff;
 }
 
+.category-label {
+  display: inline;
+  padding: .2em .6em .3em;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
 .red {
   background-color: #da4453;
   border-color: #da4453;
 }
 
+.green {
+  background-color: #37BC9B;
+  border-color: #37BC9B;
+}
+
+.yellow {
+  background-color: #F6BB42;
+  border-color: #F6BB42;
+}
+
 .ml10 {
   margin-left: 10px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
 }

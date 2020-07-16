@@ -18,4 +18,9 @@ class Mission extends Model
     {
         return $this->hasMany('App\Step');
     }
+
+    public function latest_step()
+    {
+        return $this->steps()->orderBy('date', 'DESC')->first();
+    }
 }

@@ -40,11 +40,11 @@
             </div>
             <div class="row" style="padding-bottom:10px">
               <div class="col-xs-5"><strong>カテゴリ</strong></div>
-              <div class="col-xs-7">{{ $mission->category->name }}</div>
+              <div class="col-xs-7"><span class="category-label {{ $mission->category->color }}">{{ $mission->category->name }}</span></div>
             </div>
             <div class="row">
               <div class="col-xs-5"><strong>メモ</strong></div>
-              <div class="col-xs-7">{{ $mission->memo }}</div>
+              <div class="col-xs-7">{{ $mission->memo ? $mission->memo : '---' }}</div>
             </div>
           </div>
         </div>
@@ -68,8 +68,8 @@
           <table class="table">
             <thead>
               <tr>
-                <th class="wp40">実施日</th>
-                <th class="wp20">スコア</th>
+                <th class="wp30">実施日</th>
+                <th class="wp30">スコア</th>
                 <th class="wp40">メモ</th>
               </tr>
             </thead>
@@ -77,9 +77,9 @@
             @if ( !$steps->isEmpty() )
               @foreach($steps as $step)
                 <tr>
-                  <td><a href="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}">{{ $step->date }}</a></td>
+                  <td><a href="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}">{{ $step->formatted_date }}</a></td>
                   <td>{{ $step->score . $mission->score_unit }}</td>
-                  <td>{{ $step->memo }}</td>
+                  <td>{{ $step->memo ? $step->memo : '---' }}</td>
                 </tr>
               @endforeach
             @else
