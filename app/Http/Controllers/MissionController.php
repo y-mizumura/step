@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mission;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateMission;
 use App\Http\Requests\EditMission;
 
@@ -12,7 +13,7 @@ class MissionController extends Controller
 {
     public function index()
     {
-        $missions = Mission::all();
+        $missions = Auth::user()->missions()->get();
 
         return view('missions/index', [
             'missions' => $missions
@@ -32,13 +33,12 @@ class MissionController extends Controller
     {
         $mission = new Mission();
         
-        $mission->user_id = 1;
         $mission->category_id = $request->category_id;
         $mission->name = $request->name;
         $mission->score_unit = $request->score_unit;
         $mission->memo = $request->memo;
         
-        $mission->save();
+        Auth::user()->missions()->save($mission);
 
         return redirect()->route('missions.index')->with('message', 'ミッションを追加しました。');
     }
