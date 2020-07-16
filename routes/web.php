@@ -13,15 +13,20 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/missions', 'MissionController@index')->name('missions.index');
     Route::get('/missions/create', 'MissionController@showCreateForm')->name('missions.create');
     Route::post('/missions/create', 'MissionController@create');
-    Route::get('/missions/{mission}', 'MissionController@detail')->name('missions.detail');
-    Route::get('/missions/{mission}/edit', 'MissionController@showEditForm')->name('missions.edit');
-    Route::post('/missions/{mission}/edit', 'MissionController@edit');
-    Route::post('/missions/{mission}/delete', 'MissionController@delete')->name('missions.delete');
 
-    // StepController
-    Route::post('/missions/{mission}/steps/create', 'StepController@create')->name('steps.create');
-    Route::get('/missions/{mission}/steps/{step}/edit', 'StepController@showEditForm')->name('steps.edit');
-    Route::post('/missions/{mission}/steps/{step}/edit', 'StepController@edit');
-    Route::post('/missions/{mission}/steps/{step}/delete', 'StepController@delete')->name('steps.delete');
+    // MissionPolicy
+    Route::group(['middleware' => 'can:view,mission'], function() {
+        // MissionController
+        Route::get('/missions/{mission}', 'MissionController@detail')->name('missions.detail');
+        Route::get('/missions/{mission}/edit', 'MissionController@showEditForm')->name('missions.edit');
+        Route::post('/missions/{mission}/edit', 'MissionController@edit');
+        Route::post('/missions/{mission}/delete', 'MissionController@delete')->name('missions.delete');
+
+        // StepController
+        Route::post('/missions/{mission}/steps/create', 'StepController@create')->name('steps.create');
+        Route::get('/missions/{mission}/steps/{step}/edit', 'StepController@showEditForm')->name('steps.edit');
+        Route::post('/missions/{mission}/steps/{step}/edit', 'StepController@edit');
+        Route::post('/missions/{mission}/steps/{step}/delete', 'StepController@delete')->name('steps.delete');
+    });
 
 });
