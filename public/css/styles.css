@@ -22,8 +22,8 @@ main {
 
 footer{
   width: 100%;
-  background-color: #434a54;
-  color: #fff;
+  background-color: #5D9CEC;
+  color: #FFFFFF;
   text-align: center;
   position: absolute;
   bottom: 0;
@@ -31,12 +31,43 @@ footer{
 }
 
 footer .footer {
+  background-color: #5D9CEC;
   padding: 10px 0;
 }
 
+.footer-copyright {
+  color: #FFFFFF;
+}
+
+.navbar-default {
+  background-color: #5D9CEC;
+  border-color: #5D9CEC;
+}
+
 .my-navbar-brand {
-  color: #3bafda !important;
+  color: #FFFFFF !important;
   font-size: 18px;
+}
+
+.navbar-default .navbar-toggle {
+  background-color: #434A54;
+  border-color: #434A54;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #656D78;
+  border-color: #656D78;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: #656D78;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-text {
+  color: #FFFFFF;
 }
 
 @media screen and (max-width:480px) {
