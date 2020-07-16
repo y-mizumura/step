@@ -7,7 +7,7 @@
         <div class="text-center">
           <h3>403 Error</h3>
           <p>アクセス権限がありません。</p>
-          <a href="{{ route('home') }}" class="btn btn-primary">ホームへ戻る</a>
+          <a href="{{ route('missions.index') }}" class="btn btn-primary">ホームへ戻る</a>
         </div>
       </div>
     </div>

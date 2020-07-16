@@ -7,7 +7,7 @@
         <div class="text-center">
           <h3>404 Error</h3>
           <p>ページが見つかりません。</p>
-          <a href="{{ route('home') }}" class="btn btn-primary">ホームへ戻る</a>
+          <a href="{{ route('missions.index') }}" class="btn btn-primary">ホームへ戻る</a>
         </div>
       </div>
     </div>
