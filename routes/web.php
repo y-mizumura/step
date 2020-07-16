@@ -11,7 +11,8 @@ Route::get('/missions', 'MissionController@index')->name('missions.index');
 Route::get('/missions/create', 'MissionController@showCreateForm')->name('missions.create');
 Route::post('/missions/create', 'MissionController@create');
 Route::get('/missions/{mission}', 'MissionController@detail')->name('missions.detail');
-Route::post('/missions/{mission}/edit', 'MissionController@edit')->name('missions.edit');
+Route::get('/missions/{mission}/edit', 'MissionController@showEditForm')->name('missions.edit');
+Route::post('/missions/{mission}/edit', 'MissionController@edit');
 Route::post('/missions/{mission}/delete', 'MissionController@delete')->name('missions.delete');
 
 // StepController

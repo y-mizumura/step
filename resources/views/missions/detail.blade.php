@@ -29,7 +29,10 @@
       </div>
       <div class="col col-md-4">
         <div class="panel panel-default">
-          <div class="panel-heading">ミッション詳細</div>
+          <div class="panel-heading">
+            ミッション詳細
+            <a href="{{ route('missions.edit', ['mission'=>$mission]) }}" class="pull-right"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>編集</a>
+          </div>
           <div class="panel-body">
             <div class="row" style="padding-bottom:10px">
               <div class="col-xs-5"><strong>ミッション名</strong></div>

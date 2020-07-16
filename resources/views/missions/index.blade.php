@@ -4,6 +4,11 @@
   <div class="container">
     <div class="row">
       <div class="col col-md-offset-3 col-md-6">
+        @if (Session::has('message'))
+          <div class="alert alert-success">
+              {{ session('message') }}
+          </div>
+        @endif
         <nav class="panel panel-default">
           <div class="panel-heading">
             ミッション一覧
