@@ -35,6 +35,16 @@
         </nav>
       </div>
       <div class="column col-md-8">
+        @if ( !$steps->isEmpty() )
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              チャート
+            </div>
+            <div class="panel-body">
+              <canvas id="chart" width="400" height="200"></canvas>
+            </div>
+          </div>
+        @endif
         <div class="panel panel-default">
           <div class="panel-heading">
             記録一覧
@@ -64,9 +74,50 @@
             </tbody>
           </table>
         </div>
-        <div class="panel panel-default">
-        </div>
       </div>    
     </div>
   </div>
+@endsection
+
+@section('scripts')
+  @if ( !$steps->isEmpty() )
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    <script>
+      var ctx = document.getElementById('chart').getContext('2d');
+      var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'スコア ({{$mission->score_unit}})',
+                data: [
+                  @foreach($steps_for_chart as $step)
+                    {
+                      x: '{{ $step->date }}',
+                      y: {{ $step->score }}
+                    },
+                  @endforeach
+                ],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1,
+                steppedLine: true,
+            }]
+        },
+        options: {
+          scales: {
+            xAxes: [{
+              type: 'time',
+              time: {
+                unit: 'day',
+                displayFormats: {
+                  day: 'M/D'
+                }
+              },
+              distribution: 'series'
+            }]
+          }
+        }
+      });
+    </script>
+  @endif
 @endsection

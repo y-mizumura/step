@@ -43,11 +43,13 @@ class MissionController extends Controller
 
     public function detail(Mission $mission)
     {
-        $steps = $mission->steps()->get();
+        $steps = $mission->steps()->orderBy('date', 'DESC')->get();
+        $steps_for_chart = $mission->steps()->orderBy('date', 'DESC')->take(10)->get();
 
         return view('missions/detail', [
             'mission' => $mission,
-            'steps' => $steps
+            'steps' => $steps,
+            'steps_for_chart' => $steps_for_chart
         ]);
     }
 
