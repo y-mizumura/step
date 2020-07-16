@@ -25,11 +25,11 @@
             <form action="{{ route('missions.create') }}" method="post">
               @csrf
               <div class="form-group">
-                <label for="title">ミッション名</label>
+                <label for="name">ミッション名</label>
                 <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" />
               </div>
               <div class="form-group">
-                <label for="title">カテゴリ</label>
+                <label for="category_id">カテゴリ</label>
                 <select class="form-control" id="category_id" name="category_id">
                   @foreach($categories as $category)
                      <option value="{{ $category->id }}" {{ old('category')===$category->id ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -37,11 +37,11 @@
                </select>
               </div>
               <div class="form-group">
-                <label for="title">単位</label>
+                <label for="score_unit">単位</label>
                 <input type="text" class="form-control" name="score_unit" id="score_unit" value="{{ old('score_unit') }}" />
               </div>
               <div class="form-group">
-                <label for="title">メモ</label>
+                <label for="memo">メモ</label>
                 <textarea class="form-control" name="memo" id="memo" value="{{ old('memo') }}" rows="3"></textarea>
               </div>
               <div class="text-right">
