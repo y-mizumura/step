@@ -11,7 +11,7 @@
           </div>
           <div class="list-group">
             @foreach($missions as $mission)
-              <a href="{{ route('steps.index', ['mission' => $mission]) }}" class="list-group-item" >
+              <a href="{{ route('missions.detail', ['mission' => $mission]) }}" class="list-group-item" >
                 {{ $mission->name }}
               </a>
             @endforeach

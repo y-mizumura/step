@@ -41,4 +41,11 @@ class MissionController extends Controller
         return redirect()->route('missions.index');
     }
 
+    public function detail(Mission $mission)
+    {
+        return view('missions/detail', [
+            'mission' => $mission
+        ]);
+    }
+
 }
