@@ -84,7 +84,7 @@
               @endforeach
             @else
               <tr>
-                <td colspan="3">記録は存在しません。</td>
+                <td colspan="3">ステップは存在しません。</td>
               </tr>
             @endif
             </tbody>

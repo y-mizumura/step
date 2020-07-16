@@ -55,9 +55,6 @@
             </div>
           </div>
         </nav>
-        <div class="text-center">
-          <a href="{{ url()->previous() }}">戻る</a>
-        </div>
       </div>
     </div>
   </div>
