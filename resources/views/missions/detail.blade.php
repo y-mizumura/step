@@ -45,9 +45,11 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#add_step_modal">
-          ステップを追加
-        </button>
+        <div class="panel panel-default">
+          <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#add_step_modal">
+            ステップを追加
+          </button>
+        </div>
       </div>
       <div class="column col-md-8">
         @if ( !$steps->isEmpty() )
@@ -90,7 +92,7 @@
   </div>
   {{--  モーダル  --}}
   <div class="modal fade" id="add_step_modal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-center">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

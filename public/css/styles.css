@@ -40,6 +40,15 @@ footer .footer {
   font-size: 18px;
 }
 
+.modal-dialog-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 table {
   width: 100%;
   table-layout: fixed;
