@@ -13,6 +13,8 @@ class MissionsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
         // 削除
         // ※delete()では自動増分のIDがリセットされない
         DB::table('missions')->truncate();
@@ -23,7 +25,7 @@ class MissionsTableSeeder extends Seeder
                 'name' => 'ランニング',
                 'user_id' => 1,
                 'category_id' => 1,
-                'level_unit' => '分',
+                'score_unit' => '分',
                 'memo' => '最初5分間はウォーキング',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -32,7 +34,7 @@ class MissionsTableSeeder extends Seeder
                 'name' => '腕立て',
                 'user_id' => 1,
                 'category_id' => 1,
-                'level_unit' => '回',
+                'score_unit' => '回',
                 'memo' => NULL,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -41,11 +43,13 @@ class MissionsTableSeeder extends Seeder
                 'name' => '腹筋',
                 'user_id' => 1,
                 'category_id' => 1,
-                'level_unit' => '回',
+                'score_unit' => '回',
                 'memo' => NULL,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]
         ]);
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

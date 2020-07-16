@@ -33,7 +33,7 @@ class MissionController extends Controller
         $mission->user_id = 1;
         $mission->category_id = $request->category_id;
         $mission->name = $request->name;
-        $mission->level_unit = $request->level_unit;
+        $mission->score_unit = $request->score_unit;
         $mission->memo = $request->memo;
         
         $mission->save();

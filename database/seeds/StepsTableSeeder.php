@@ -25,7 +25,7 @@ class StepsTableSeeder extends Seeder
                 [
                     'mission_id' => 1,
                     'date' => $date,
-                    'level' => '30',
+                    'score' => '30',
                     'memo' => NULL,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -33,7 +33,7 @@ class StepsTableSeeder extends Seeder
                 [
                     'mission_id' => 2,
                     'date' => $date,
-                    'level' => '20',
+                    'score' => '20',
                     'memo' => NULL,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -41,7 +41,7 @@ class StepsTableSeeder extends Seeder
                 [
                     'mission_id' => 3,
                     'date' => $date,
-                    'level' => '15',
+                    'score' => '15',
                     'memo' => NULL,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),

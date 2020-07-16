@@ -32,7 +32,7 @@
               </div>
               <div class="form-group">
                 <label for="title">単位</label>
-                <input type="text" class="form-control" name="level_unit" id="level_unit" value="{{ old('level_unit') }}" />
+                <input type="text" class="form-control" name="score_unit" id="score_unit" value="{{ old('score_unit') }}" />
               </div>
               <div class="form-group">
                 <label for="title">メモ</label>

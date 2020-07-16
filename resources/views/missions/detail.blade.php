@@ -19,7 +19,7 @@
             </div>
             <div class="row" style="padding-bottom:10px">
               <div class="col-xs-5"><strong>単位</strong></div>
-              <div class="col-xs-7">{{ $mission->level_unit }}</div>
+              <div class="col-xs-7">{{ $mission->score_unit }}</div>
             </div>
             <div class="row">
               <div class="col-xs-5"><strong>メモ</strong></div>
@@ -46,7 +46,7 @@
               @foreach($steps as $step)
                 <tr>
                   <td>{{ $step->date }}</td>
-                  <td>{{ $step->level . $mission->level_unit }}</td>
+                  <td>{{ $step->score . $mission->score_unit }}</td>
                   <td>{{ $step->memo }}</td>
                 </tr>
               @endforeach
