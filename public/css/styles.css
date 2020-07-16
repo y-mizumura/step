@@ -40,6 +40,12 @@ footer .footer {
   font-size: 18px;
 }
 
+@media screen and (max-width:480px) {
+  .breadcrumb li {
+    font-size: 10px;
+  }
+}
+
 .modal-dialog-center {
   display: flex;
   flex-direction: column;
