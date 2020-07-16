@@ -105,11 +105,11 @@
           <form id="add_step_form" action="{{ route('steps.create', ['mission' => $mission]) }}" method="post">
             @csrf
             <div class="form-group">
-              <label for="date">実施日</label>
+              <label for="date">実施日<span class="label red ml10">必須</span></label>
               <input type="text" class="form-control" name="date" id="date" value="{{ old('date') }}" />
             </div>
             <div class="form-group">
-              <label for="score">スコア</label>
+              <label for="score">スコア<span class="label red ml10">必須</span></label>
               <div class="input-group">
                 <input type="number" class="form-control" name="score" id="score" value="{{ old('score') }}" />
                 <span class="input-group-addon">{{ $mission->score_unit }}</span>

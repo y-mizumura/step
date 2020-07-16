@@ -24,11 +24,11 @@
               </div>
             @endif
             <div class="form-group">
-              <label for="name">ミッション名</label>
+              <label for="name">ミッション名<span class="label red ml10">必須</span></label>
               <input type="text" class="form-control" name="name" id="name" value="{{ old('name') ?? $mission->name }}" form="mission_update"/>
             </div>
             <div class="form-group">
-              <label for="category_id">カテゴリ</label>
+              <label for="category_id">カテゴリ<span class="label red ml10">必須</span></label>
               <select class="form-control" id="category_id" name="category_id" form="mission_update">
                 @foreach($categories as $category)
                    <option value="{{ $category->id }}" {{ $category->id==old('category', $mission->category_id) ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -36,7 +36,7 @@
              </select>
             </div>
             <div class="form-group">
-              <label for="score_unit">単位</label>
+              <label for="score_unit">単位<span class="label red ml10">必須</span></label>
               <input type="text" class="form-control" name="score_unit" id="score_unit" value="{{ old('score_unit') ?? $mission->score_unit }}" form="mission_update" />
             </div>
             <div class="form-group">

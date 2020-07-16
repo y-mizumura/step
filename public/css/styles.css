@@ -82,3 +82,12 @@ td.wp50, th.wp50 {
 .form-control[readonly] {
   background-color: #fff;
 }
+
+.red {
+  background-color: #da4453;
+  border-color: #da4453;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
