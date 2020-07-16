@@ -61,7 +61,7 @@
           </div>
         @endif
         <div class="panel panel-default">
-          <div class="panel-heading">ステップ一覧</div>
+          <div class="panel-heading">ステップ履歴</div>
           <table class="table">
             <thead>
               <tr>
@@ -106,8 +106,11 @@
               <input type="text" class="form-control" name="date" id="date" value="{{ old('date') }}" />
             </div>
             <div class="form-group">
-              <label for="score">スコア ({{ $mission->score_unit }})</label>
-              <input type="number" class="form-control" name="score" id="score" value="{{ old('score') }}" />
+              <label for="score">スコア</label>
+              <div class="input-group">
+                <input type="number" class="form-control" name="score" id="score" value="{{ old('score') }}" />
+                <span class="input-group-addon">{{ $mission->score_unit }}</span>
+              </div>
             </div>
             <div class="form-group">
               <label for="memo">メモ</label>

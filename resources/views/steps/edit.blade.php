@@ -25,8 +25,11 @@
             @endif
 
             <div class="form-group">
-              <label for="score">スコア ({{ $mission->score_unit }})</label>
-              <input type="number" class="form-control" name="score" id="score" value="{{ old('score') ?? $step->score }}" form="step_update" />
+              <label for="score">スコア</label>
+              <div class="input-group">
+                <input type="number" class="form-control" name="score" id="score" value="{{ old('score') ?? $step->score }}" form="step_update" />
+                <span class="input-group-addon">{{ $mission->score_unit }}</span>
+              </div>
             </div>
             <div class="form-group">
               <label for="memo">メモ</label>
