@@ -15,7 +15,7 @@ class CreateStepsTable extends Migration
     {
         Schema::create('steps', function (Blueprint $table) {
             $table->id();
-            $table->integer('mission_id')->unsigned();
+            $table->bigInteger('mission_id')->unsigned();
             $table->date('date');
             $table->integer('level')->unsigned();
             $table->string('memo', 20)->nullable();

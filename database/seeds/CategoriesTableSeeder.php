@@ -13,6 +13,8 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
         // 削除
         // ※delete()では自動増分のIDがリセットされない
         DB::table('categories')->truncate();
@@ -38,5 +40,7 @@ class CategoriesTableSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]
         ]);
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
