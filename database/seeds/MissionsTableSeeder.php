@@ -52,7 +52,7 @@ class MissionsTableSeeder extends Seeder
                 'name' => 'あさがおの観察',
                 'user_id' => 1,
                 'category_id' => 3,
-                'score_unit' => '回',
+                'score_unit' => 'cm',
                 'memo' => NULL,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
