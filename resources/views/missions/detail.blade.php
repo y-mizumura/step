@@ -3,6 +3,12 @@
 @section('content')
   <div class="container">
     <div class="row">
+      <div class="col-md-12">
+        <ol class="breadcrumb breadcrumb-arrow">
+          <li><a href="{{ route('missions.index') }}">ミッション一覧</a></li>
+          <li class="active"><span>{{ $mission->name }}</span></li>
+        </ol>
+      </div>
       <div class="col col-md-4">
         <nav class="panel panel-default">
           <div class="panel-heading">

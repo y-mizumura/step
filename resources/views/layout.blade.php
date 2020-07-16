@@ -23,9 +23,18 @@
       </div>
     </nav>
   </header>
-<main>
-  @yield('content')
-</main>
+  <main>
+    @yield('content')
+  </main>
+  <footer>
+    <div class="col-md-12">
+      <div class="footer">
+        <div class="container">
+          <div class="footer-copyright text-center">Copyright © 2020 xxxx.</div>
+        </div>
+      </div>
+    </div>
+  </footer>
 {{--  @if(Auth::check())
   <script>
     document.getElementById('logout').addEventListener('click', function(event) {
