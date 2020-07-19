@@ -97,7 +97,7 @@
             <div class="form-group">
               <label for="score">スコア<span class="label red ml10">必須</span></label>
               <div class="input-group">
-                <input type="number" class="form-control" name="score" id="score" value="{{ old('score') }}" />
+                <input type="number" class="form-control" name="score" id="score" value="{{ old('score') }}" step="0.1" pattern="\d+(\.\d*)?"/>
                 <span class="input-group-addon">{{ $mission->score_unit }}</span>
               </div>
             </div>
