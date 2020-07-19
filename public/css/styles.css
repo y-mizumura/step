@@ -70,12 +70,6 @@ footer .footer {
   color: #FFFFFF;
 }
 
-@media screen and (max-width:480px) {
-  .breadcrumb li {
-    font-size: 10px;
-  }
-}
-
 .modal-dialog-center {
   display: flex;
   flex-direction: column;
@@ -83,6 +77,17 @@ footer .footer {
   min-height: 100%;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+canvas {
+  width: 400px;
+  height: 300px;
+}
+@media screen and (max-width:480px) {
+  canvas {
+    width: 400px;
+    height: 200px;
+  }
 }
 
 table {

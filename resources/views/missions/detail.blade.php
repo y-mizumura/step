@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-12">
         <ol class="breadcrumb breadcrumb-arrow">
-          <li><a href="{{ route('missions.index') }}">ミッション一覧</a></li>
+          <li><a href="{{ route('missions.index') }}"><i class="glyphicon glyphicon-home"></i></a></li>
           <li class="active"><span>{{ $mission->name }}</span></li>
         </ol>
         @if($errors->any())
@@ -31,7 +31,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             ミッション詳細
-            <a href="{{ route('missions.edit', ['mission'=>$mission]) }}" class="pull-right"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>編集</a>
+            <a href="{{ route('missions.edit', ['mission'=>$mission]) }}" class="pull-right"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
           </div>
           <div class="panel-body">
             <div class="row" style="padding-bottom:10px">
@@ -59,7 +59,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">チャート</div>
             <div class="panel-body">
-              <canvas id="chart" width="400" height="200"></canvas>
+              <canvas id="chart" class="canvas"></canvas>
             </div>
           </div>
         @endif
@@ -164,6 +164,7 @@
             }]
         },
         options: {
+          maintainAspectRatio: false,
           scales: {
             yAxes: [{
               ticks: {

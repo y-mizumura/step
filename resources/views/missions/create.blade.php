@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-offset-3 col-md-6">
         <ol class="breadcrumb breadcrumb-arrow">
-          <li><a href="{{ route('missions.index') }}">ミッション一覧</a></li>
+          <li><a href="{{ route('missions.index') }}"><i class="glyphicon glyphicon-home"></i></a></li>
           <li class="active"><span>ミッション追加</span></li>
         </ol>
       </div>

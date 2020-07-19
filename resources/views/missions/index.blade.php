@@ -11,8 +11,8 @@
         @endif
         <nav class="panel panel-default">
           <div class="panel-heading">
-            ミッション一覧
-            <a href="{{ route('missions.create') }}" class="pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>追加</a>
+            Mission
+            <a href="{{ route('missions.create') }}" class="pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
           </div>
           <div class="list-group">
             @if ( !$missions->isEmpty() )
