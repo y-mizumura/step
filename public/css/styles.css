@@ -181,6 +181,5 @@ td.wp50, th.wp50 {
 }
 
 #date {
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
+  min-width:95%;
 }
