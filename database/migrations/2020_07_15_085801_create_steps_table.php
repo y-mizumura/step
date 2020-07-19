@@ -17,7 +17,7 @@ class CreateStepsTable extends Migration
             $table->id();
             $table->bigInteger('mission_id')->unsigned();
             $table->date('date');
-            $table->decimal('score', 8, 1);
+            $table->decimal('score', 6, 1)->unsigned();
             $table->string('memo', 20)->nullable();
             $table->timestamps();
         });

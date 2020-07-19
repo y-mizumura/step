@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'between' => [
+        'numeric' => ':attribute は :min〜:max の間で入力してください。',
+    ],
     'max' => [
         'string' => ':attribute は :max 文字以内で入力してください。',
     ],

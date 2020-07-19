@@ -32,7 +32,7 @@ class CreateStep extends FormRequest
                     $query->where('mission_id', $this->mission->id);
                 }),
             ],
-            'score' => 'required',
+            'score' => 'required|numeric|between:0,99999.99',
             'memo' => 'max:20',
         ];
     }

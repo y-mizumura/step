@@ -14,7 +14,7 @@ class ChangeStepsColumnScore extends Migration
     public function up()
     {
         Schema::table('steps', function (Blueprint $table) {
-            $table->decimal('score', 8, 1)->change();
+            $table->decimal('score', 6, 1)->unsigned()->change();
         });
     }
 

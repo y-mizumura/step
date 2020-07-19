@@ -24,7 +24,7 @@ class EditStep extends FormRequest
     public function rules()
     {
         return [
-            'score' => 'required',
+            'score' => 'required|numeric|between:0,99999.99',
             'memo' => 'max:20',
         ];
     }
