@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>記録管理アプリ</title>
   @yield('styles')
-  <link rel="stylesheet" href="/css/styles.css?ver=1.0.1">
+  <link rel="stylesheet" href="/css/styles.css?ver=1.0.2">
 </head>
 <body>
   <header>
