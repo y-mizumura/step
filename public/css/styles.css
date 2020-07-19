@@ -179,3 +179,8 @@ td.wp50, th.wp50 {
     text-align: center;
   }
 }
+
+#date {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
