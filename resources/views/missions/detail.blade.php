@@ -1,9 +1,5 @@
 @extends('layout')
 
-@section('styles')
-  @include('share.flatpickr.styles')
-@endsection
-
 @section('content')
   <div class="container">
     <div class="row">
@@ -30,22 +26,12 @@
       <div class="col col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading">
-            ミッション詳細
+            {{--  ミッション詳細  --}}
+            {{ $mission->name }}<span class="category-label {{ $mission->category->color }}">{{ $mission->category->name }}</span>
             <a href="{{ route('missions.edit', ['mission'=>$mission]) }}" class="pull-right"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
           </div>
           <div class="panel-body">
-            <div class="row" style="padding-bottom:10px">
-              <div class="col-xs-5"><strong>ミッション名</strong></div>
-              <div class="col-xs-7">{{ $mission->name }}</div>
-            </div>
-            <div class="row" style="padding-bottom:10px">
-              <div class="col-xs-5"><strong>カテゴリ</strong></div>
-              <div class="col-xs-7"><span class="category-label {{ $mission->category->color }}">{{ $mission->category->name }}</span></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-5"><strong>メモ</strong></div>
-              <div class="col-xs-7">{{ $mission->memo ? $mission->memo : '---' }}</div>
-            </div>
+            {{ $mission->memo ? $mission->memo : 'メモなし' }}
           </div>
         </div>
         <div class="panel panel-default">
@@ -64,21 +50,21 @@
           </div>
         @endif
         <div class="panel panel-default">
-          <div class="panel-heading">ステップ履歴</div>
+          <div class="panel-heading">履歴</div>
           <table class="table">
             <thead>
               <tr>
-                <th class="wp30">実施日</th>
-                <th class="wp30">スコア</th>
-                <th class="wp40">メモ</th>
+                <th class="wp30 tac-sp">実施日</th>
+                <th class="wp30 tac-sp">スコア</th>
+                <th class="wp40 tac-sp">メモ</th>
               </tr>
             </thead>
             <tbody>
             @if ( !$steps->isEmpty() )
               @foreach($steps as $step)
                 <tr>
-                  <td><a href="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}">{{ $step->formatted_date }}</a></td>
-                  <td>{{ $step->score . $mission->score_unit }}</td>
+                  <td class="tac-sp"><a href="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}">{{ $step->formatted_date }}</a></td>
+                  <td class="tac-sp">{{ $step->score . $mission->score_unit }}</td>
                   <td>{{ $step->memo ? $step->memo : '---' }}</td>
                 </tr>
               @endforeach
@@ -106,7 +92,7 @@
             @csrf
             <div class="form-group">
               <label for="date">実施日<span class="label red ml10">必須</span></label>
-              <input type="text" class="form-control" name="date" id="date" value="{{ old('date') }}" />
+              <input type="date" class="form-control" name="date" id="date" value="{{ old('date') }}" />
             </div>
             <div class="form-group">
               <label for="score">スコア<span class="label red ml10">必須</span></label>
@@ -131,13 +117,13 @@
 @endsection
 
 @section('scripts')
-  @include('share.flatpickr.scripts')
   <script>
-    flatpickr(document.getElementById('date'), {
-      locale: 'ja',
-      dateFormat: "Y/m/d",
-      weekNumbers: true
-    });
+    var today = new Date();
+    today.setDate(today.getDate());
+    var yyyy = today.getFullYear();
+    var mm = ("0"+(today.getMonth()+1)).slice(-2);
+    var dd = ("0"+today.getDate()).slice(-2);
+    document.getElementById("date").value=yyyy+'-'+mm+'-'+dd;
   </script>
 
   @if ( !$steps->isEmpty() )

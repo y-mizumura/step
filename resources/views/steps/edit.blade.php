@@ -7,12 +7,12 @@
         <ol class="breadcrumb breadcrumb-arrow">
           <li><a href="{{ route('missions.index') }}"><i class="glyphicon glyphicon-home"></i></a></li>
           <li><a href="{{ route('missions.detail', ['mission' => $mission]) }}">{{ $mission->name }}</a></li>
-          <li class="active"><span>ステップ編集</span></li>
+          <li class="active"><span>{{ $step->formatted_date }}</span></li>
         </ol>
       </div>
       <div class="col col-md-offset-3 col-md-6">
         <nav class="panel panel-default">
-          <div class="panel-heading">ステップ：『{{ $step->date }}』</div>
+          <div class="panel-heading">編集</div>
           <div class="panel-body">
             @if($errors->any())
               <div class="alert alert-danger">
@@ -23,7 +23,6 @@
                 </ul>
               </div>
             @endif
-
             <div class="form-group">
               <label for="score">スコア<span class="label red ml10">必須</span></label>
               <div class="input-group">
@@ -38,7 +37,7 @@
             <div class="text-right">
               <form id="delete_step_{{ $step->id }}" method="POST" action="{{ route('steps.delete', ['mission' => $mission, 'step' => $step]) }}" style="display:inline;">
                 @csrf
-                <a href="javascript:void(0)" onclick="delete_confirm( 'delete_step_{{ $step->id }}', 'ステップを削除します。よろしいですか。' )" style="color:red;">ステップを削除する</a>
+                <a href="javascript:void(0)" onclick="delete_confirm( 'delete_step_{{ $step->id }}', 'ステップを削除します。よろしいですか。' )" style="color:red;">削除する</a>
               </form>
               <form id="step_update" action="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}" method="post" style="display:inline; margin-left:10px; margin-right:10px;">
                 @csrf

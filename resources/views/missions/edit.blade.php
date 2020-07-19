@@ -12,7 +12,7 @@
       </div>
       <div class="col col-md-offset-3 col-md-6">
         <nav class="panel panel-default">
-          <div class="panel-heading">ミッション：『{{ $mission->name }}』</div>
+          <div class="panel-heading">編集</div>
           <div class="panel-body">
             @if($errors->any())
               <div class="alert alert-danger">
@@ -46,7 +46,7 @@
             <div class="text-right">
               <form id="delete_mission_{{ $mission->id }}" method="POST" action="{{ route('missions.delete', ['mission' => $mission]) }}" style="display:inline;">
                 @csrf
-                <a href="javascript:void(0)" onclick="delete_confirm( 'delete_mission_{{ $mission->id }}', 'ミッションを削除します。\n関連するステップも削除されますが、よろしいですか。' )" style="color:red;">ミッションを削除する</a>
+                <a href="javascript:void(0)" onclick="delete_confirm( 'delete_mission_{{ $mission->id }}', 'ミッションを削除します。\n関連するステップも削除されますが、よろしいですか。' )" style="color:red;">削除する</a>
               </form>
               <form id="mission_update" action="{{ route('missions.edit', ['mission' => $mission]) }}" method="post" style="display:inline; margin-left:10px; margin-right:10px;">
                 @csrf

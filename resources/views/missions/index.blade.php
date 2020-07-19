@@ -18,7 +18,7 @@
             @if ( !$missions->isEmpty() )
               @foreach($missions as $mission)
                 <a href="{{ route('missions.detail', ['mission' => $mission]) }}" class="list-group-item" >
-                  <h4 class="list-group-item-heading">{{ $mission->name }}<span class="label {{ $mission->category->color }} ml10 mb5">{{ $mission->category->name }}</span></h4>
+                  <h4 class="list-group-item-heading">{{ $mission->name }}<span class="category-label {{ $mission->category->color }} ml10 mb5">{{ $mission->category->name }}</span></h4>
                   <p class="list-group-item-text">最終実施日：{{ $mission->latest_step() ? $mission->latest_step()->date : '未実施' }}</p>
                 </a>
               @endforeach

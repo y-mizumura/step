@@ -79,6 +79,10 @@ footer .footer {
   margin-bottom: auto;
 }
 
+.breadcrumb > .active {
+  font-weight: bold;
+}
+
 canvas {
   width: 400px;
   height: 300px;
@@ -113,6 +117,13 @@ td.wp50, th.wp50 {
   width:50%;
 }
 
+.panel-heading {
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .form-control[disabled],
 .form-control[readonly] {
   background-color: #fff;
@@ -120,12 +131,18 @@ td.wp50, th.wp50 {
 
 .category-label {
   display: inline;
-  padding: .2em .6em .3em;
+  font-size: 12px;
+  font-weight: normal;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-left: 10px;
   line-height: 1;
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  vertical-align: baseline;
+  vertical-align: 2px;
   border-radius: .25em;
 }
 
@@ -150,4 +167,15 @@ td.wp50, th.wp50 {
 
 .mb5 {
   margin-bottom: 5px;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > td{
+  padding-left:20px;
+}
+
+@media screen and (max-width:480px) {
+  .tac-sp {
+    text-align: center;
+  }
 }
