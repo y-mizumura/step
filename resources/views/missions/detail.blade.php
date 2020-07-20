@@ -120,21 +120,20 @@
   {{--  スマホ用固定フッター  --}}
   <div id="add-btn" class="add-btn">
     <a href="#" data-toggle="modal" data-target="#add_step_modal">＋</a>
-    {{--  <button type="button" data-toggle="modal" data-target="#add_step_modal">
-      ＋
-    </button>  --}}
   </div>
 @endsection
 
 @section('scripts')
   <script>
     $(function() {
+      // スマホ：ページ下部に固定したボタンがfooterに被らないようにする処理
+      // → iOSの場合、この方法ではツールバー非表示時に被る。
+      // → CSSの方法に要調整
       var topBtn = $('#add-btn');
-      //フッター手前でボタンを止める（ここを追加する）
       $(window).scroll(function () {
-          var height = $(document).height(); //ドキュメントの高さ 
-          var position = $(window).height() + $(window).scrollTop(); //ページトップから現在地までの高さ
-          var footer = $("footer").height(); //フッターの高さ
+          var height = $(document).height();
+          var position = $(window).height() + $(window).scrollTop();
+          var footer = $("footer").height();
           if ( height - position  < footer ) { 
               topBtn.css({
                 position : "absolute",
@@ -147,16 +146,7 @@
               });
           }
       });
-      //スクロールしてトップへ戻る
-      {{--  topBtn.click(function () {
-          $('body,html').animate({
-              scrollTop: 0
-          }, 500);
-          return false;
-      });  --}}
-  });
-
-
+    });
 
     var today = new Date();
     today.setDate(today.getDate());
