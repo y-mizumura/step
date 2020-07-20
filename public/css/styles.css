@@ -8,6 +8,11 @@ body {
   padding-bottom: 80px;
   box-sizing: border-box;
 }
+@media screen and (max-width:480px) {
+  body {
+    font-size:12px;
+  }
+}
 
 header {
   position: fixed;
@@ -47,6 +52,7 @@ footer .footer {
 .my-navbar-brand {
   color: #FFFFFF !important;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .navbar-default .navbar-toggle {
@@ -123,6 +129,17 @@ td.wp50, th.wp50 {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+@media screen and (max-width:480px) {
+  .panel-heading {
+    font-size: 14px;
+  }
+  a.list-group-item .list-group-item-heading {
+    font-size: 14px;
+  }
+  .h4, h4 {
+    font-size: 16px;
+  }
+}
 
 .form-control[disabled],
 .form-control[readonly] {
@@ -144,6 +161,13 @@ td.wp50, th.wp50 {
   white-space: nowrap;
   vertical-align: 2px;
   border-radius: .25em;
+}
+@media screen and (max-width:480px) {
+  .category-label {
+    font-size: 11px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
 }
 
 .red {

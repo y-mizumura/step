@@ -23,7 +23,10 @@
                 </a>
               @endforeach
             @else
-              <span class="list-group-item">ミッションは存在しません。</span>
+              <span class="list-group-item">
+                <h4 class="list-group-item-heading">ミッションが存在しません。</h4>
+                「＋」ボタンからミッションを作成しましょう！
+              </span>
             @endif
           </div>
         </nav>
