@@ -44,6 +44,7 @@
     @yield('content')
   </main>
   <footer>
+    @yield('sp-menu')
     <div class="col-md-12">
       <div class="footer">
         <div class="container">

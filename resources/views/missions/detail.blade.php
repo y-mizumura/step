@@ -34,7 +34,7 @@
             {{ $mission->memo ? $mission->memo : 'メモなし' }}
           </div>
         </div>
-        <div class="panel panel-default">
+        <div class="panel panel-default pc">
           <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#add_step_modal">
             ステップを追加
           </button>
@@ -116,8 +116,48 @@
   </div>
 @endsection
 
+@section('sp-menu')
+  {{--  スマホ用固定フッター  --}}
+  <div id="add-btn" class="add-btn">
+    <a href="#" data-toggle="modal" data-target="#add_step_modal">＋</a>
+    {{--  <button type="button" data-toggle="modal" data-target="#add_step_modal">
+      ＋
+    </button>  --}}
+  </div>
+@endsection
+
 @section('scripts')
   <script>
+    $(function() {
+      var topBtn = $('#add-btn');
+      //フッター手前でボタンを止める（ここを追加する）
+      $(window).scroll(function () {
+          var height = $(document).height(); //ドキュメントの高さ 
+          var position = $(window).height() + $(window).scrollTop(); //ページトップから現在地までの高さ
+          var footer = $("footer").height(); //フッターの高さ
+          if ( height - position  < footer ) { 
+              topBtn.css({
+                position : "absolute",
+                top : -50
+              });
+          } else { 
+              topBtn.css({
+                position : "fixed",
+                top: "auto"
+              });
+          }
+      });
+      //スクロールしてトップへ戻る
+      {{--  topBtn.click(function () {
+          $('body,html').animate({
+              scrollTop: 0
+          }, 500);
+          return false;
+      });  --}}
+  });
+
+
+
     var today = new Date();
     today.setDate(today.getDate());
     var yyyy = today.getFullYear();

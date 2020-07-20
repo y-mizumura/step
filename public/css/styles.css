@@ -207,3 +207,46 @@ td.wp50, th.wp50 {
 #date {
   min-width:95%;
 }
+
+@media screen and (max-width:480px) {
+  .pc {
+    display: none;
+  }
+}
+.sp {
+  display: none;
+}
+@media screen and (max-width:480px) {
+  .sp {
+    display: block;
+  }
+}
+
+@media screen and (max-width:480px) {
+  .add-btn {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    margin:  0 auto;
+    padding-top: 15px;
+    background-color: #5D9CEC;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border-radius: 50%;
+  }
+  .add-btn a{
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
