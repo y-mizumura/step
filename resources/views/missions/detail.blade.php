@@ -132,7 +132,7 @@
       var topBtn = $('#add-btn');
       $(window).scroll(function () {
           var height = $(document).height();
-          var position = $(window).height() + $(window).scrollTop();
+          var position = window.innerHeight + $(window).scrollTop();
           var footer = $("footer").height();
           if ( height - position  < footer ) { 
               topBtn.css({
