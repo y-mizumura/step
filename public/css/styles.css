@@ -195,7 +195,7 @@ td.wp50, th.wp50 {
 
 .table > thead > tr > th,
 .table > tbody > tr > td{
-  padding-left:20px;
+  padding: 8px 5px;
 }
 
 @media screen and (max-width:480px) {
