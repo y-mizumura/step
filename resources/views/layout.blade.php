@@ -8,6 +8,9 @@
   <title>記録管理アプリ</title>
   @yield('styles')
   <link rel="stylesheet" href="/css/styles.css?ver=1.0.7">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/android-chrome-256x256.png">
 </head>
 <body>
   <header>
