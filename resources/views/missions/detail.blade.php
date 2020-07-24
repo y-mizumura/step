@@ -118,7 +118,7 @@
 
 @section('sp-menu')
   {{--  スマホ用固定フッター  --}}
-  <div id="add-btn" class="add-btn">
+  <div id="add-btn" class="add-btn sp">
     <a href="#" data-toggle="modal" data-target="#add_step_modal">＋</a>
   </div>
 @endsection
