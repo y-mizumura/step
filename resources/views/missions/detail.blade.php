@@ -31,7 +31,7 @@
             <a href="{{ route('missions.edit', ['mission'=>$mission]) }}" class="pull-right"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
           </div>
           <div class="panel-body">
-            {{ $mission->memo ? $mission->memo : 'メモなし' }}
+            {!! $mission->memo ?  nl2br(e($mission->memo)) : 'メモなし' !!}
           </div>
         </div>
         <div class="panel panel-default pc">
@@ -65,7 +65,7 @@
                 <tr>
                   <td class="tac-sp"><a href="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}">{{ $step->formatted_date }}</a></td>
                   <td class="tac-sp">{{ $step->score . $mission->score_unit }}</td>
-                  <td>{{ $step->memo ? $step->memo : '---' }}</td>
+                  <td>{!! $step->memo ? nl2br(e($step->memo)) : '---' !!}</td>
                 </tr>
               @endforeach
             @else
