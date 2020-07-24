@@ -13,6 +13,7 @@
   <link rel="icon" type="image/png" href="/android-chrome-256x256.png">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 </head>
 <body>
   <header>
