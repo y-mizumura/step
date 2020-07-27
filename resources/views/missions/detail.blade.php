@@ -1,5 +1,17 @@
 @extends('layout')
 
+@section('styles')
+  <link href="/fullcalendar-5.1.0/lib/main.css" rel="stylesheet" />
+  <style>
+    .fc-event-time, .fc-event-title {
+      display: none !important;
+    }
+    .fc-daygrid-event-harness {
+      display: inline-block;
+    }
+  </style>
+@endsection
+
 @section('content')
   <div class="container">
     <div class="row">
@@ -48,6 +60,12 @@
               <canvas id="chart" class="canvas"></canvas>
             </div>
           </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">実施日</div>
+            <div class="panel-body">
+              <div id="calendar"></div>
+            </div>
+          </div>
         @endif
         <div class="panel panel-default">
           <div class="panel-heading">履歴</div>
@@ -76,7 +94,7 @@
             </tbody>
           </table>
         </div>
-      </div>    
+      </div>
     </div>
   </div>
   {{--  モーダル  --}}
@@ -157,6 +175,29 @@
   </script>
 
   @if ( !$steps->isEmpty() )
+    <script src="/fullcalendar-5.1.0/lib/main.js"></script>
+    <script src="/fullcalendar-5.1.0/lib/locales/ja.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          locale: 'ja',
+          dayMaxEvents: false,
+          height: 'auto',
+          events: [
+            @foreach($steps as $step)
+              {
+                title: '30.0回',
+                start: '{{ $step->date }}T00:00:00',
+                color: '#00F9A9',
+              },
+            @endforeach
+          ]
+        });
+        calendar.render();
+      });
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
     <script>
       var ctx = document.getElementById('chart').getContext('2d');
