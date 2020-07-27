@@ -198,10 +198,34 @@ td.wp50, th.wp50 {
   padding: 8px 5px;
 }
 
+.th1, .td1 {
+  width: 20%;
+}
+
+.th2, .td2 {
+  width: 15%;
+}
+
+.th3, .td3 {
+  width: 65%;
+}
+
 @media screen and (max-width:480px) {
-  .tac-sp {
-    text-align: center;
+  .th1, .td1 {
+    width: 30%;
   }
+
+  .th2, .td2 {
+    width: 30%;
+  }
+
+  .th3, .td3 {
+    width: 40%;
+  }
+}
+
+.tac {
+  text-align: center;
 }
 
 #date {

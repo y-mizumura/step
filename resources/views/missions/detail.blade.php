@@ -54,18 +54,18 @@
           <table class="table">
             <thead>
               <tr>
-                <th class="wp30 tac-sp">実施日</th>
-                <th class="wp30 tac-sp">スコア</th>
-                <th class="wp40 tac-sp">メモ</th>
+                <th class="th1 tac">実施日</th>
+                <th class="th2 tac">スコア</th>
+                <th class="th3 tac">メモ</th>
               </tr>
             </thead>
             <tbody>
             @if ( !$steps->isEmpty() )
               @foreach($steps as $step)
                 <tr>
-                  <td class="tac-sp"><a href="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}">{{ $step->formatted_date }}</a></td>
-                  <td class="tac-sp">{{ $step->score . $mission->score_unit }}</td>
-                  <td>{!! $step->memo ? nl2br(e($step->memo)) : '---' !!}</td>
+                  <td class="td1 tac"><a href="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}">{{ $step->formatted_date }}</a></td>
+                  <td class="td2 tac">{{ $step->score . $mission->score_unit }}</td>
+                  <td class="td3">{!! $step->memo ? nl2br(e($step->memo)) : '---' !!}</td>
                 </tr>
               @endforeach
             @else

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>記録管理アプリ</title>
   @yield('styles')
-  <link rel="stylesheet" href="/css/styles.css?ver=1.0.9">
+  <link rel="stylesheet" href="/css/styles.css?ver=1.0.10">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/android-chrome-256x256.png">
