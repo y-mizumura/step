@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('styles')
+  <link rel="stylesheet" href="/jquery-minicolors-master/jquery.minicolors.css">
+@endsection
+
 @section('content')
   <div class="container">
     <div class="row">
@@ -37,6 +41,14 @@
                </select>
               </div>
               <div class="form-group">
+                <label for="color">色<span class="label red ml10">必須</span></label>
+                <input type="text" maxlength="7" class="form-control" name="color" id="color" >
+              </div>
+              <div class="form-group">
+                <label for="color2">色<span class="label red ml10">必須</span></label>
+                <input type="color" class="form-control" name="color2" id="color2">
+              </div>
+              <div class="form-group">
                 <label for="score_unit">単位<span class="label red ml10">必須</span></label>
                 <input type="text" class="form-control" name="score_unit" id="score_unit" value="{{ old('score_unit') }}" />
               </div>
@@ -53,4 +65,16 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('scripts')
+  <script src="/jquery-minicolors-master/jquery.minicolors.js"></script>
+  <script>
+    $('#color').each( function() {
+        $(this).minicolors({
+          format: $(this).attr('data-format') || 'hex',
+          theme: 'bootstrap'
+        });
+    });
+</script>
 @endsection
