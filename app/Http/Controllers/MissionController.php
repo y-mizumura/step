@@ -33,8 +33,9 @@ class MissionController extends Controller
     {
         $mission = new Mission();
         
-        $mission->category_id = $request->category_id;
         $mission->name = $request->name;
+        $mission->category_id = $request->category_id;
+        $mission->color = $request->color;
         $mission->score_unit = $request->score_unit;
         $mission->memo = $request->memo;
         
@@ -67,8 +68,9 @@ class MissionController extends Controller
 
     public function edit(Mission $mission, EditMission $request)
     {
-        $mission->category_id = $request->category_id;
         $mission->name = $request->name;
+        $mission->category_id = $request->category_id;
+        $mission->color = $request->color;
         $mission->score_unit = $request->score_unit;
         $mission->memo = $request->memo;
         $mission->save();

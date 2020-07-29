@@ -26,6 +26,7 @@ class CreateMission extends FormRequest
         return [
             'name' => 'required|max:20',
             'category_id' => 'required',
+            'color' => 'required',
             'score_unit' => 'required|max:10',
             'memo' => 'max:100',
         ];
@@ -36,6 +37,7 @@ class CreateMission extends FormRequest
         return [
             'name' => 'ミッション名',
             'category_id' => 'カテゴリ',
+            'color' => '色',
             'score_unit' => '単位',
             'memo' => 'メモ',
         ];

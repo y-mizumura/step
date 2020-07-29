@@ -38,7 +38,7 @@
               </div>
               <div class="form-group">
                 <label for="color">色<span class="label red ml10">必須</span></label>
-                <input type="color" class="form-control" name="color" id="color">
+                <input type="color" class="form-control" name="color" id="color" value="{{ old('color') }}">
               </div>
               <div class="form-group">
                 <label for="score_unit">単位<span class="label red ml10">必須</span></label>
