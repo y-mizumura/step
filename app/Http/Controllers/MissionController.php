@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateMission;
 use App\Http\Requests\EditMission;
+use Carbon\Carbon;
 
 class MissionController extends Controller
 {
@@ -46,8 +47,12 @@ class MissionController extends Controller
 
     public function detail(Mission $mission)
     {
-        $steps = $mission->steps()->orderBy('date', 'DESC')->get();
+        // チャート（過去10件）
         $steps_for_chart = $mission->steps()->orderBy('date', 'DESC')->take(10)->get();
+
+        // 履歴（過去3ヶ月） ※現在日付以降も含む
+        $start = Carbon::today()->subMonth(3);
+        $steps = $mission->steps()->orderBy('date', 'DESC')->where("date", ">", $start)->get();
 
         return view('missions/detail', [
             'mission' => $mission,

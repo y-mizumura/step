@@ -46,54 +46,65 @@
             {!! $mission->memo ?  nl2br(e($mission->memo)) : 'メモなし' !!}
           </div>
         </div>
-        <div class="panel panel-default pc">
-          <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#add_step_modal">
-            ステップを追加
-          </button>
-        </div>
+        @if ( !$steps->isEmpty() )
+          <div class="panel panel-default pc">
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#add_step_modal">
+              ステップを追加
+            </button>
+          </div>
+        @endif
       </div>
       <div class="column col-md-8">
         @if ( !$steps->isEmpty() )
           <div class="panel panel-default">
-            <div class="panel-heading">チャート</div>
+            <div class="panel-heading">チャート（過去10件）</div>
             <div class="panel-body">
               <canvas id="chart" class="canvas"></canvas>
             </div>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading">実施日</div>
-            <div class="panel-body">
-              <div id="calendar"></div>
+            <div class="panel-heading">履歴（過去3ヶ月）</div>
+            <ul id="myTab1" class="nav nav-tabs">
+              <li class="active"><a href="#calendar-tab" data-toggle="tab">Calendar</a></li>
+              <li><a href="#list-tab" data-toggle="tab">List</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade active in" id="calendar-tab">
+                <div id="calendar"></div>
+              </div>
+              <div class="tab-pane fade" id="list-tab">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="th1 tac">実施日</th>
+                      <th class="th2 tac">スコア</th>
+                      <th class="th3 tac">メモ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($steps as $step)
+                      <tr>
+                        <td class="td1 tac"><a href="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}">{{ $step->formatted_date }}</a></td>
+                        <td class="td2 tac">{{ $step->score . $mission->score_unit }}</td>
+                        <td class="td3">{!! $step->memo ? nl2br(e($step->memo)) : '---' !!}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
+        @else
+          <div class="panel panel-default">
+            <div class="panel-heading">ステップを追加しましょう！</div>
+            <div class="panel-body">
+              <p>まだ、記録がありません。<br/>こちらより、ステップを追加しましょう！</p>
+              <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#add_step_modal">
+                ステップを追加
+              </button>
+            </div>    
+          </div>
         @endif
-        <div class="panel panel-default">
-          <div class="panel-heading">履歴</div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="th1 tac">実施日</th>
-                <th class="th2 tac">スコア</th>
-                <th class="th3 tac">メモ</th>
-              </tr>
-            </thead>
-            <tbody>
-            @if ( !$steps->isEmpty() )
-              @foreach($steps as $step)
-                <tr>
-                  <td class="td1 tac"><a href="{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}">{{ $step->formatted_date }}</a></td>
-                  <td class="td2 tac">{{ $step->score . $mission->score_unit }}</td>
-                  <td class="td3">{!! $step->memo ? nl2br(e($step->memo)) : '---' !!}</td>
-                </tr>
-              @endforeach
-            @else
-              <tr>
-                <td colspan="3">ステップは存在しません。</td>
-              </tr>
-            @endif
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
   </div>
@@ -134,12 +145,14 @@
   </div>
 @endsection
 
-@section('sp-menu')
-  {{--  スマホ用固定フッター  --}}
-  <div id="add-btn" class="add-btn sp">
-    <a href="#" data-toggle="modal" data-target="#add_step_modal">＋</a>
-  </div>
-@endsection
+@if ( !$steps->isEmpty() )
+  @section('sp-menu')
+    {{--  スマホ用固定フッター  --}}
+    <div id="add-btn" class="add-btn sp">
+      <a href="#" data-toggle="modal" data-target="#add_step_modal">＋</a>
+    </div>
+  @endsection
+@endif
 
 @section('scripts')
   <script>
@@ -189,7 +202,7 @@
               {
                 title: '30.0回',
                 start: '{{ $step->date }}T00:00:00',
-                color: '#00F9A9',
+                color: '{{ $mission->color }}',
               },
             @endforeach
           ]

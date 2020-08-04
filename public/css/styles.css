@@ -5,7 +5,7 @@ body {
   background-color: #f4f7f8;
   min-height: 100vh;
   position: relative;
-  padding-bottom: 80px;
+  padding-bottom: 50px;
   box-sizing: border-box;
 }
 @media screen and (max-width:480px) {
@@ -249,6 +249,7 @@ td.wp50, th.wp50 {
 @media screen and (max-width:480px) {
   .add-btn {
     position: fixed;
+    z-index: 1000;
     left: 85%;
     transform: translate(-50%, -35%);
     bottom: 0;
