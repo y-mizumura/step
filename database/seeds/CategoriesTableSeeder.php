@@ -22,7 +22,7 @@ class CategoriesTableSeeder extends Seeder
         // 初期データ
         DB::table('categories')->insert([
             [
-                'name' => '運動',
+                'name' => 'トレーニング',
                 'color' => 'red',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

@@ -26,7 +26,7 @@ class MissionsTableSeeder extends Seeder
                 'user_id' => 1,
                 'category_id' => 1,
                 'score_unit' => '分',
-                'memo' => '最初5分間はウォーキング',
+                'memo' => '5分間ウォーキング',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
