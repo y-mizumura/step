@@ -9,6 +9,16 @@
       clear: none;
       margin-right: 10px;
     }
+    dl{
+      display:flex;
+      margin-bottom: 0px !important;
+    }
+    dt{
+      width: 95%;
+    }
+    dd{
+      width: 5%;
+    }
   </style>
 @endsection
 
@@ -35,9 +45,15 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             {{--  ミッション詳細  --}}
-            <span class="mission-name">{{ $mission->name }}</span>
-            <span class="category-label {{ $mission->category->color }}">{{ $mission->category->name }}</span>
-            <a href="{{ route('missions.edit', ['mission'=>$mission]) }}" class="pull-right"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+            <dl>
+              <dt>
+                <span class="mission-name">{{ $mission->name }}</span>
+                <span class="category-label {{ $mission->category->color }}">{{ $mission->category->name }}</span>
+              </dt>
+              <dd>
+                <a href="{{ route('missions.edit', ['mission'=>$mission]) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+              </dd>
+            </dl>
           </div>
           <div class="panel-body">
             {!! $mission->memo ?  nl2br(e($mission->memo)) : 'メモなし' !!}
