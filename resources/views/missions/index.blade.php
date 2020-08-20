@@ -1,5 +1,20 @@
 @extends('layout')
 
+@section('styles')
+  <style>
+    dl{
+      display:flex;
+      margin-bottom: 0px !important;
+    }
+    dt{
+      width: 5%;
+    }
+    dd{
+      width: auto;
+    }
+  </style>
+@endsection
+
 @section('content')
   <div class="container">
     <div class="row">
@@ -18,11 +33,18 @@
             @if ( !$missions->isEmpty() )
               @foreach($missions as $mission)
                 <a href="{{ route('missions.detail', ['mission' => $mission]) }}" class="list-group-item" >
-                  <h4 class="list-group-item-heading">
-                    <span style="color:{{ $mission->color }}; padding-right:5px;">●</span>{{ $mission->name }}
-                    <span class="category-label {{ $mission->category->color }} ml10 mb5">{{ $mission->category->name }}</span>
-                  </h4>
-                  <p class="list-group-item-text">最終実施日：{{ $mission->latest_step() ? $mission->latest_step()->date : '未実施' }}</p>
+                  <dl>
+                    <dt><span style="color:{{ $mission->color }};">●</span></dt>
+                    <dd>
+                      <h4 class="list-group-item-heading">
+                        <span class="mission-name">{{ $mission->name }}</span>
+                        <span class="category-label {{ $mission->category->color }} mb5">{{ $mission->category->name }}</span>
+                      </h4>
+                      <p class="list-group-item-text">
+                        {{ $mission->latest_step_string() }}
+                      </p>
+                    </dd>
+                  </dl>
                 </a>
               @endforeach
             @else

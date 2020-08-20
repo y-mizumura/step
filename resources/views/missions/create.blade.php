@@ -3,12 +3,6 @@
 @section('content')
   <div class="container">
     <div class="row">
-      <div class="col-md-offset-3 col-md-6">
-        <ol class="breadcrumb breadcrumb-arrow">
-          <li><a href="{{ route('missions.index') }}"><i class="glyphicon glyphicon-home"></i></a></li>
-          <li class="active"><span>ミッション追加</span></li>
-        </ol>
-      </div>
       <div class="col col-md-offset-3 col-md-6">
         <nav class="panel panel-default">
           <div class="panel-heading">ミッションを追加する</div>

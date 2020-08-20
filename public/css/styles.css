@@ -22,7 +22,7 @@ header {
 }
 
 main {
-  padding-top: 80px;
+  padding-top: 70px;
 }
 
 footer{
@@ -85,10 +85,6 @@ footer .footer {
   margin-bottom: auto;
 }
 
-.breadcrumb > .active {
-  font-weight: bold;
-}
-
 canvas {
   width: 400px;
   height: 300px;
@@ -135,6 +131,7 @@ td.wp50, th.wp50 {
   }
   a.list-group-item .list-group-item-heading {
     font-size: 14px;
+    line-height: 18px;
   }
   .h4, h4 {
     font-size: 16px;
@@ -146,6 +143,10 @@ td.wp50, th.wp50 {
   background-color: #fff;
 }
 
+.mission-name {
+  margin-right: 5px;
+}
+
 .category-label {
   display: inline;
   font-size: 12px;
@@ -154,7 +155,6 @@ td.wp50, th.wp50 {
   padding-bottom: 2px;
   padding-left: 4px;
   padding-right: 4px;
-  margin-left: 10px;
   line-height: 1;
   color: #fff;
   text-align: center;

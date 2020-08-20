@@ -3,11 +3,11 @@
 @section('styles')
   <link href="/fullcalendar-5.1.0/lib/main.css" rel="stylesheet" />
   <style>
-    .fc-event-time, .fc-event-title {
-      display: none !important;
-    }
-    .fc-daygrid-event-harness {
-      display: inline-block;
+   .fc-event-time, .fc-event-title {
+      padding: 0 1px;
+      float: left;
+      clear: none;
+      margin-right: 10px;
     }
   </style>
 @endsection
@@ -16,10 +16,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <ol class="breadcrumb breadcrumb-arrow">
-          <li><a href="{{ route('missions.index') }}"><i class="glyphicon glyphicon-home"></i></a></li>
-          <li class="active"><span>{{ $mission->name }}</span></li>
-        </ol>
         @if($errors->any())
           <div class="alert alert-danger">
             <ul>
@@ -39,7 +35,8 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             {{--  ミッション詳細  --}}
-            {{ $mission->name }}<span class="category-label {{ $mission->category->color }}">{{ $mission->category->name }}</span>
+            <span class="mission-name">{{ $mission->name }}</span>
+            <span class="category-label {{ $mission->category->color }}">{{ $mission->category->name }}</span>
             <a href="{{ route('missions.edit', ['mission'=>$mission]) }}" class="pull-right"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
           </div>
           <div class="panel-body">
@@ -197,15 +194,23 @@
           locale: 'ja',
           dayMaxEvents: false,
           height: 'auto',
+          displayEventTime: false,
           events: [
             @foreach($steps as $step)
               {
-                title: '30.0回',
+                title: '{{ $step->score . $mission->score_unit }}',
                 start: '{{ $step->date }}T00:00:00',
                 color: '{{ $mission->color }}',
+                url: '{{ route('steps.edit', ['mission' => $mission, 'step' => $step]) }}'
               },
             @endforeach
-          ]
+          ],
+          eventClick: function(info) {
+            info.jsEvent.preventDefault(); // don't let the browser navigate
+            if (info.event.url) {
+              location.href = info.event.url;
+            }
+          }
         });
         calendar.render();
       });
