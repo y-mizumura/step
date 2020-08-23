@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('styles')
+  <link href="/fullcalendar-5.1.0/lib/main.css" rel="stylesheet" />
   <style>
     dl{
       display:flex;
@@ -11,6 +12,9 @@
     }
     dd{
       width: auto;
+    }
+    .fc-event-title {
+      display: none !important;
     }
   </style>
 @endsection
@@ -55,7 +59,42 @@
             @endif
           </div>
         </nav>
+        {{--  カレンダー  --}}
+        <div class="panel panel-default">
+          <div class="panel-heading">Calendar</div>
+          <div class="panel-body">
+            <div id="calendar"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+@endsection
+
+@section('scripts')
+  <script src="/fullcalendar-5.1.0/lib/main.js"></script>
+  <script src="/fullcalendar-5.1.0/lib/locales/ja.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        locale: 'ja',
+        dayMaxEvents: false,
+        height: 'auto',
+        displayEventTime: false,
+        events: [
+          @foreach($missions as $mission)
+            @foreach($mission->steps as $step)
+              {
+                title: '{{ $step->score . $mission->score_unit }}',
+                start: '{{ $step->date }}T00:00:00',
+                color: '{{ $mission->color }}'
+              },
+            @endforeach
+          @endforeach
+        ],
+      });
+      calendar.render();
+    });
+  </script>
 @endsection
