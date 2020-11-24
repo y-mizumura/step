@@ -18,8 +18,8 @@ class StepsTableSeeder extends Seeder
         DB::table('steps')->truncate();
 
         // 初期データ
-        $start = '2020-07-10'; # 開始日時
-        $end = '2020-07-20'; # 終了日時
+        $start = '2020-11-3'; # 開始日時
+        $end = '2020-11-10'; # 終了日時
         for ($date = $start; $date <= $end; $date = date('Y-m-d', strtotime($date . '+1 day'))) {
             DB::table('steps')->insert([
                 [
@@ -49,8 +49,8 @@ class StepsTableSeeder extends Seeder
             ]);
         }
 
-        $start = '2020-07-21'; # 開始日時
-        $end = '2020-08-05'; # 終了日時
+        $start = '2020-11-12'; # 開始日時
+        $end = '2020-11-24'; # 終了日時
         for ($date = $start; $date <= $end; $date = date('Y-m-d', strtotime($date . '+3 day'))) {
             DB::table('steps')->insert([
                 [
