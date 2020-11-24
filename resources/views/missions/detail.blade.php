@@ -3,12 +3,6 @@
 @section('styles')
   <link href="/fullcalendar-5.1.0/lib/main.css" rel="stylesheet" />
   <style>
-   .fc-event-time, .fc-event-title {
-      padding: 0 1px;
-      float: left;
-      clear: none;
-      margin-right: 10px;
-    }
     dl{
       display:flex;
       margin-bottom: 0px !important;
@@ -18,6 +12,14 @@
     }
     dd{
       width: 5%;
+    }
+    @media only screen and (max-device-width: 480px) {
+      .fc-event-time, .fc-event-title {
+        padding: 0 1px;
+        float: left;
+        clear: none;
+        margin-right: 10px;
+      }
     }
   </style>
 @endsection
